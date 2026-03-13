@@ -19,7 +19,7 @@ overflow:hidden;
 }
 
 .container{
-margin-top:60px;
+margin-top:50px;
 }
 
 h1{
@@ -41,15 +41,15 @@ justify-content:center;
 background:#2a2a4a;
 padding:20px;
 border-radius:15px;
-font-size:20px;
+font-size:22px;
 }
 
 .number{
-font-size:32px;
+font-size:30px;
 margin-bottom:5px;
 }
 
-/* زر اللوكيشن */
+/* الأزرار */
 
 button{
 margin-top:25px;
@@ -71,11 +71,11 @@ background:#ff4f7a;
 .heart{
 position:fixed;
 bottom:-10px;
-font-size:25px;
-animation:float 5s linear infinite;
+font-size:24px;
+animation:up 5s linear infinite;
 }
 
-@keyframes float{
+@keyframes up{
 
 0%{
 transform:translateY(0);
@@ -134,14 +134,17 @@ opacity:0;
 
 <br>
 
+<button onclick="playMusic()">🎵 تشغيل الأغنية</button>
+
+<br>
+
 <a href="https://maps.app.goo.gl/Ppg53PUfUUXFHUNb7">
 <button>📍 لوكيشن البيت</button>
 </a>
 
 </div>
 
-<!-- الأغنية -->
-<audio autoplay loop>
+<audio id="song">
 <source src="song.mp3" type="audio/mpeg">
 </audio>
 
@@ -175,6 +178,13 @@ document.getElementById("seconds").innerHTML = seconds%60;
 },1000);
 
 
+/* تشغيل الأغنية */
+
+function playMusic(){
+document.getElementById("song").play();
+}
+
+
 /* القلوب */
 
 function createHeart(){
@@ -186,8 +196,6 @@ heart.className="heart";
 heart.innerHTML="❤️";
 
 heart.style.left=Math.random()*100+"vw";
-
-heart.style.fontSize=(20+Math.random()*20)+"px";
 
 document.body.appendChild(heart);
 
