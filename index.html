@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>خطوبة أبانوب و مريم</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0e0d2b;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+.container{
+margin-top:60px;
+}
+
+h1{
+font-size:40px;
+color:#ff7a9c;
+margin-bottom:30px;
+}
+
+/* العداد */
+
+.countdown{
+display:grid;
+grid-template-columns:repeat(3,120px);
+gap:15px;
+justify-content:center;
+}
+
+.box{
+background:#2a2a4a;
+padding:20px;
+border-radius:15px;
+font-size:20px;
+}
+
+.number{
+font-size:32px;
+margin-bottom:5px;
+}
+
+/* زر اللوكيشن */
+
+button{
+margin-top:25px;
+padding:15px 25px;
+font-size:18px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+background:#ff7a9c;
+color:white;
+}
+
+button:hover{
+background:#ff4f7a;
+}
+
+/* القلوب */
+
+.heart{
+position:fixed;
+bottom:-10px;
+font-size:25px;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+opacity:1;
+}
+
+100%{
+transform:translateY(-100vh);
+opacity:0;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💍 أبانوب ❤️ مريم 💍</h1>
+
+<div class="countdown">
+
+<div class="box">
+<div id="years" class="number">0</div>
+سنين
+</div>
+
+<div class="box">
+<div id="months" class="number">0</div>
+شهور
+</div>
+
+<div class="box">
+<div id="days" class="number">0</div>
+أيام
+</div>
+
+<div class="box">
+<div id="hours" class="number">0</div>
+ساعات
+</div>
+
+<div class="box">
+<div id="minutes" class="number">0</div>
+دقائق
+</div>
+
+<div class="box">
+<div id="seconds" class="number">0</div>
+ثواني
+</div>
+
+</div>
+
+<br>
+
+<a href="https://maps.app.goo.gl/Ppg53PUfUUXFHUNb7">
+<button>📍 لوكيشن البيت</button>
+</a>
+
+</div>
+
+<!-- الأغنية -->
+<audio autoplay loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* العداد */
+
+var target = new Date("March 27, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+var now = new Date().getTime();
+
+var diff = target - now;
+
+var seconds = Math.floor(diff/1000);
+var minutes = Math.floor(seconds/60);
+var hours = Math.floor(minutes/60);
+var days = Math.floor(hours/24);
+
+var months = Math.floor(days/30);
+var years = Math.floor(months/12);
+
+document.getElementById("years").innerHTML = years;
+document.getElementById("months").innerHTML = months%12;
+document.getElementById("days").innerHTML = days%30;
+document.getElementById("hours").innerHTML = hours%24;
+document.getElementById("minutes").innerHTML = minutes%60;
+document.getElementById("seconds").innerHTML = seconds%60;
+
+},1000);
+
+
+/* القلوب */
+
+function createHeart(){
+
+var heart = document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(20+Math.random()*20)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
